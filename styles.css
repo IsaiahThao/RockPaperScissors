@@ -3,8 +3,12 @@
     box-sizing: border-box;
 }
 
-
-.button-container{
+ul{
     display: flex;
-    align-items: space-between;
+    justify-content: center;
+    margin: 15px;
+}
+
+button{
+    margin-left: 15px;
 }
