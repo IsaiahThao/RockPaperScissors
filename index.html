@@ -4,17 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="styles.css">
     <script src="index.js"></script>
 </head>
 <body>
-    <div class = 'ui' id="menu">
-        <ul>
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
-        </ul>
+    <div class = 'menu'>
+        <button class = 'selector'>✊</button>
+        <button class = 'selector'>✋</button>
+        <button class = 'selector'>✌️</button>
     </div>
+
+    <div class ='results'>
+        <div>
+            You
+            <span class="score">0</span>
+        </div>
+        <div>
+            Computer
+            <span class="score">0</span>
+        </div>
+    </div>
+
+    <div class = 'display-choice'>
+        <div class = 'result-selector winner'>✊</div>
+        <div class = 'result-selector'>✌️</div>
+    </div>
+    
 </body>
 </html>

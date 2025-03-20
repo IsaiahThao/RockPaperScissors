@@ -1,14 +1,42 @@
 *{
-    margin: 0px;
     box-sizing: border-box;
 }
 
-ul{
-    display: flex;
-    justify-content: center;
-    margin: 15px;
+body{
+    background-color: #CCC;
 }
 
-button{
-    margin-left: 15px;
+.menu{
+    display: flex;
+    justify-content: center;
+}
+
+.selector{
+    background: none;
+    border: none;
+    outline:none;
+    font-size: 4rem;
+}
+
+.selector:hover {
+    transform: scale(1.2);
+}
+
+
+.results, .display-choice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    gap: 2rem;
+    font-size: 2rem;
+}
+
+.result-selector{
+    opacity: .5;
+}
+
+.result-selector.winner{
+    opacity: 1;
+    font-size: 3rem;
 }
