@@ -1,14 +1,16 @@
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
-const selectionButtons = document.querySelectorAll('.selector')
+const selectionButtons = document.querySelectorAll('.selector');
+let humanScore = 0;
+let computerScore = 0;
 
 console.log('Test');
 
 selectionButtons.forEach(selectionButtons => {
     selectionButtons.addEventListener('click', (e) => {
         const choice = e.target.id
-        playRound(choice, getComputerChoice())
+        makeChoice(choice)
     })
 })
 
@@ -30,45 +32,81 @@ function getComputerChoice(){
     return choice
 }
 
+function makeChoice(humanSelection){
+    const computerSelection = getComputerChoice()
+
+    if (playRound(humanSelection, computerSelection)){
+        incrementPlayerScore()
+    }
+    else{
+        incrementCopmuterScore()
+    }
+
+    gameOver()
+}
+
 function playRound(humanSelection, computerSelection){
+    const displayWinner = document.querySelector('.display-choice');
     if (humanSelection == computerSelection){
-        console.log('Draw!')
+        displayWinner.innerHTML = 'Draw!'
     }
     
     if (humanSelection == 'rock'){
         if (computerSelection == 'paper'){
-            console.log('You lose! Paper beats rock') 
+            displayWinner.innerHTML = 'You lose! Paper beats rock'
             return false
         }
         else{
-            console.log('You win! Rock beats scissors')
+            displayWinner.innerHTML = 'You win! Rock beats scissors'
             return true
         }
     }
 
     else if (humanSelection == 'paper'){
         if (computerSelection == 'scissors'){
-            console.log('You lose! Scissors beats paper')
+            displayWinner.innerHTML = 'You lose! Scissors beats paper'
             return false
         }
         else{
-            console.log('You win! Paper beats rock')
+            displayWinner.innerHTML = 'You win! Paper beats rock'
             return true
         }
     }
 
     else{
         if (computerSelection == 'paper'){
-            console.log('You win! Scissors beats paper')
+            displayWinner.innerHTML = 'You win! Scissors beats paper'
             return true
         }
         else{
-            console.log('You lose! Rock beats scissors')
+            displayWinner.innerHTML = 'You lose! Rock beats scissors'
             return false
         }
     }
 }
 
+function incrementPlayerScore(){
+    humanScore += 1;
+    const displayHumanScore = document.querySelector('#user-score')
+    displayHumanScore.innerHTML = `${humanScore}`
+}
 
+function incrementCopmuterScore(){
+    computerScore += 1;
+    const displayComputerScore = document.querySelector('#computer-score')
+    displayComputerScore.innerHTML = `${computerScore}`
+}
 
-
+function gameOver(){
+   if (humanScore + computerScore == 5){
+    if (humanScore > computerScore){
+        alert(`Game over! You win`)
+    }
+    else if (computerScore > humanScore){
+        alert(`Game over! You lose!`)
+    }
+    else{
+        alert(`Game over! Draw!`)
+    }
+   }
+}
